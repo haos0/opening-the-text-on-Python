@@ -1,0 +1,21 @@
+import cv2
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd = r'C:/Users/Пользователь/AppData/Local/Tesseract-OCR/tesseract.exe'
+
+while True:
+	# Getting Data
+	print('Какую задачу решаем?', end='  ')
+	task = 'Images/task'+input()+'.png'
+
+	# Showing the Task
+	img = cv2.imread(task)
+	cv2.imshow('Task', img)
+	cv2.waitKey(0)
+
+	# Printing the Task
+	text = pytesseract.image_to_string(img, lang='rus')
+	print(text)
+
+	x = input()
+	if x == 'qqq':
+		break
